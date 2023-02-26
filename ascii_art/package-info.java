@@ -1,5 +1,5 @@
 /**
  * Main module of the application.
- * @author Dan Nirel
+ * @author Aviel Raclaw
  */
 package ascii_art;
