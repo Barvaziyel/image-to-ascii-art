@@ -1,0 +1,53 @@
+*************
+* FILE LIST *
+*************
+
+README: README file
+
+Package ascii_art:
+- Driver.java: Contains the Main method
+- Shell.java: called by Main function, runs the program, deals with user input
+
+**************************************************************************************************************
+This package is the driver of the program. It runs the program and deals with the user input
+**************************************************************************************************************
+
+
+Package img_to_char:
+- BrightnessImgCharMatcher.java: Matches the sub-images to the characters and deals with that conversion
+- CharRenderer.java: Renders the ASCII art
+
+**************************************************************************************************************
+Deals with converting the image to ASCII characters and renders it to the required output.
+**************************************************************************************************************
+
+
+Package image:
+- FileImage.java: implements Image, gets image from file, puts it into Color pixels
+- Image.java: interface for Image object, objects that hold an image
+- ImageIterableProperty.java: Iterable for Image objects
+
+**************************************************************************************************************
+This package contains all classes related the the Image objects.
+**************************************************************************************************************
+
+The algorithm I created has a time complexity of O(n), while:
+n = max(character set to use, sub-images in image)
+
+This is because at worst we iterate over all of the sub images and we iterate over all the characters,
+separately.
+
+The algorithm has memory complexity of O(n) while n = max(characters available to use, pixels in Image)
+
+This is because I save in a HashMap all the characters every used this run as well as in a set. I also create
+an ArrayList of an ArrayList of Color pixels.
+
+I chose to create to HashMaps that are exact opposites, one maps characters to their brightness value, and the
+ other maps brightness values to the corresponding characters. I also create a HashMap that maps the
+ normalized values to the original values of brightness. This is so that once I find the most suitable
+ normalized value to replace the sub-image, I can efficiently follow it to the corresponding original
+ brightness, and then to the corresponding character.
+
+I also used TreeSets so store all characters used, so that I can quickly check if it already mapped, and I
+store locally a TreeSet of original brightness values of characters so that afterwards I can quickly find
+the brightest and least brightest characters, for normalization.
